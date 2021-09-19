@@ -1,16 +1,9 @@
-version: 2
-jobs:
-  build:
-    docker:
-      - image: sphinxdoc/docker-ci
-        environment:
-          DO_EPUBCHECK: 1
-    working_directory: /sphinx
-    steps:
-      - checkout
-      - run: /python3.6/bin/pip install -U pip setuptools
-      - run: /python3.6/bin/pip install -U .[test]
-      - run: mkdir -p test-reports/pytest
-      - run: make test PYTHON=/python3.6/bin/python TEST="--junitxml=test-reports/pytest/results.xml -vv"
-      - store_test_results:
-          path: test-reports
+# Ref: https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository#configuring-the-template-chooser
+blank_issues_enabled: false  # default: true
+contact_links:
+- name: Question
+  url: https://stackoverflow.com/questions/tagged/python-sphinx
+  about: For Q&A purpose, please use Stackoverflow with the tag python-sphinx
+- name: Discussion
+  url: https://groups.google.com/forum/#!forum/sphinx-users
+  about: For general discussion, please use sphinx-users mailing list.
